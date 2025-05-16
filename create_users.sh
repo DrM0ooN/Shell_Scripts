@@ -7,7 +7,7 @@ SEMESTER=$(basename "$INPUT_FILE" .csv)
 OUTPUT_FILE="${SEMESTER}_users.csv"
 GROUP="students"
 
-# Create group
+# Creating group
 sudo groupadd $GROUP 2>/dev/null
 
 # Output CSV header
@@ -24,7 +24,7 @@ do
 
     sudo useradd -m -s /bin/bash -g $GROUP "$username"
     echo "${username}:ChangeMe123" | sudo chpasswd
-    sudo chage -d 0 "$username"  # force password change
+    sudo chage -d 0 "$username"  # forcing password change
 
     sudo mkdir -p /home/"$username"/{documents,code}
     sudo cp POLICY.md /home/"$username"/POLICY.md
